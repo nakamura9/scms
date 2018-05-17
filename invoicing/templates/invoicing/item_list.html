@@ -1,0 +1,26 @@
+{% extends "common_data/list_template.html" %}
+
+{% block list_headings %}
+    <tr>
+        <td class="info">Code</td>
+        <td class="info">Item Name</td>
+        <td class="info">Unit Price</td>
+        <td class="info">Actions</td>
+    </tr>
+{% endblock %}
+
+{% block list_content %}
+    {% for item in object_list %}
+    <tr>
+        <td>{{item.code}}</td>
+        <td>{{item.item_name}}</td>
+        <td>{{item.unit_price}}</td>
+        <td>
+        
+        <a href="{% url 'invoicing:update-item' pk=item.code %}" class="btn btn-default">
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+{% endblock %}

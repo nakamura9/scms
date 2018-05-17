@@ -1,0 +1,33 @@
+{% extends "window.html" %}
+{% block content %}
+{% load render_bundle from webpack_loader %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Create New Invoice</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+                <form method="POST" action="">
+                        {% csrf_token %}
+                        <table class="table">
+                            <tr>
+                                <td><label>Customer:</label></td>
+                                <td><div id="customer-search"></div></td>
+                            </tr>
+                            {{form.as_table}}
+                        </table>
+                        <button type="submit" class="btn btn-primary pull-right">Submit</button> 
+                    </form>
+        </div>
+        <div class="col-sm-8" id="item-table">
+
+        </div>
+    </div>
+    
+</div>
+
+
+{% render_bundle 'invoicing' %}
+{% endblock %}

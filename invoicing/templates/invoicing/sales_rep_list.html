@@ -1,0 +1,28 @@
+{% extends "common_data/list_template.html" %}
+
+{% block list_headings %}
+    <tr>
+        <td class="info">Full Name</td>
+        <td class="info">Title</td>
+        <td class="info">User Name</td>
+        <td class="info">Phone #</td>
+        <td class="info">Actions</td>
+    </tr>
+{% endblock %}
+
+{% block list_content %}
+    {% for rep in object_list %}
+    <tr>
+        <td>{{rep.first_name}} {{rep.last_name}}</td>
+        <td>{{rep.title}}</td>
+        <td>{{rep.user_name}}</td>
+        <td>{{rep.phone}}</td>
+        <td>
+        
+        <a href="{% url 'invoicing:update-sales-rep' pk=rep.pk %}" class="btn btn-default">
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+{% endblock %}

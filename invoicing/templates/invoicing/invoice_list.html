@@ -1,0 +1,28 @@
+{% extends "common_data/list_template.html" %}
+
+{% block list_headings %}
+    <tr>
+        <td class="info">Invoice #</td>
+        <td class="info">Customer</td>
+        <td class="info">Date</td>
+        <td class="info">Items</td>
+        <td class="info">Actions</td>
+    </tr>
+{% endblock %}
+
+{% block list_content %}
+    {% for invoice in object_list %}
+    <tr>
+        <td>{{invoice.pk}}</td>
+        <td>{{invoice.customer}}</td>
+        <td>{{invoice.date}}</td>
+        <td>{{invoice.items_set}}</td>
+        <td>
+        
+        <a href="{% url 'invoicing:update-invoice' invoice.pk %}" class="btn btn-default">
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+{% endblock %}
