@@ -1,11 +1,16 @@
 {% extends "window.html" %} {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>{{title}}</h3>
-        </div>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>{{title}}</h1>
+        <a class="btn btn-primary btn-lg" href="{{new_link}}">Create New</a>
+        
     </div>
+</div>
+
+
+<div class="container">
     <div class="row">
         <div class="col-sm-4">
             {% if is_paginated %}

@@ -41,8 +41,8 @@
                 </div>
                 <div class="panel-body">
                       <ul>
-                          <li><a href="#">Apply Payment</a></li>
-                          <li><a href="#">List Payments</a></li>
+                          <li><a href="{% url 'invoicing:create-payment' %}">Apply Payment</a></li>
+                          <li><a href="{% url 'invoicing:payments-list' %}">List Payments</a></li>
                       </ul>
                 </div>
           </div>
@@ -78,14 +78,12 @@
         <div class="col-sm-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Reports</h3>
+                    <h3 class="panel-title">Related Forms</h3>
                 </div>
                 <div class="panel-body">
-                    <li><a href="#">Invoice Reports</a></li>
-                    <li><a href="#">Customer Reports</a></li>
-                    <li><a href="#">Unpaid Accounts Report</a></li>
-                    <li><a href="#">Sales Rep reports</a></li>
-                    <li><a href="#">Inventory Reports</a></li>
+                    <li><a href="#">Receipts</a></li>
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="#">Quotes</a></li>
                 </div>
             </div>
             
@@ -93,22 +91,36 @@
     </div>
     <div class="row">
         <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Configuration</h3>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li><a href="#">Edit </a></li>
-                        <li><a href="#">Remove client</a></li>
-                        <li><a href="#">Client list</a></li>
-                    </ul>
-                </div>
-            </div>
+                <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Reports</h3>
+                        </div>
+                        <div class="panel-body">
+                            <li><a href="#">Invoice Reports</a></li>
+                            <li><a href="#">Customer Reports</a></li>
+                            <li><a href="#">Unpaid Accounts Report</a></li>
+                            <li><a href="#">Sales Rep reports</a></li>
+                            <li><a href="#">Statement</a></li>
+                            <li><a href="#">Inventory Reports</a></li>
+                        </div>
+                    </div>
+            
             
             
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            
+                <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Configuration</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="{% url 'invoicing:config' %}">Settings</a></li>
+                            </ul>
+                        </div>
+                    </div>
+        </div>
         <div class="col-sm-4"></div>
     </div>
 

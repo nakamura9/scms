@@ -18,7 +18,6 @@ class InvoiceTable extends Component{
     componentDidMount(){
         if(this.props.populated){
             var url = window.location.href;
-            console.log(url);
             var url_elements = url.split("/")
             var pk = url_elements[url_elements.length-1];
 
@@ -27,39 +26,55 @@ class InvoiceTable extends Component{
                 method: "GET",
                 data: {}
             }).then(res => {
-                console.log(res);
                 var items = res.items;
                 var i=0;
+                console.log('items');
+                console.log(res);
                 for(i in items){
-                    console.log(items[i]);
                     $.ajax({
-                        url: "/invoicing/api/item/" + (items[i]-1),
-                        method:"GET"
-                    }).then(item =>{
-                        this.state.items.concat({
-                            code: 1,
-                            description: 1,
-                            price: 1,
-                            quantity: item.quantity
+                        url: "/invoicing/api/invoice-item/" + (items[i]) + "/",
+                        method: "GET"
+                    }).then(inv_item =>{
+                        
+                        var subtotal = inv_item.item.unit_price * inv_item.quantity;
+                        this.setState({items: this.state.items.concat({
+                            code: inv_item.item.code,
+                            description: inv_item.item.item_name,
+                            price: inv_item.item.unit_price,
+                            quantity: inv_item.quantity,
+                            subtotal: subtotal,
+                            id: inv_item.id
                         })
                     })
+                        
+                    });
                 }
             });
             }
+            
         }
     
     removeItem(index){
         //removes an item from the state and the table
+        
         var newState = this.state;
-        newState.items.splice(index, 1)
+        
+        
+        if ($("#item_" + index)){
+            this.props.removeHandler(index);
+        }
+        // dont use else statement!
+        if(this.props.populated){
+            var pk = this.state.items[index].pk;
+            this.props.populatedRemoveHandler(pk);
+        }
+        newState.items.splice(index, 1);
         this.setState(newState);
-        this.props.removeHandler(index);
     }
 
     addItem(data){
         //adds items to the state 
         this.setState({items: this.state.items.concat(data)});
-        this.state.items.length
         this.props.addHandler(data, this.state.items.length);
     }
 
@@ -75,7 +90,7 @@ class InvoiceTable extends Component{
                     <thead style={{backgroundColor: "blue",
                                     color: "white"}}>
                         <tr>
-                            <td style={{maxWidth: "30px"}}></td>
+                            <td style={{minWidth: "50px"}}></td>
                             <td style={headStyle}>Item Code</td>
                             <td style={headStyle}>Item Description</td>
                             <td style={headStyle}>Quantity</td>
@@ -107,7 +122,7 @@ class InvoiceTable extends Component{
                             <td colSpan={5}><b><u>Total:</u></b></td>
                             <td><b>{(this.state.items.length === 0) ? 0 :
                                          this.state.items.reduce(
-                                             function(a,b){ 
+                                             function(a,b){
                                                 return a + b.subtotal
                                             }, 0
                                     )}
@@ -165,7 +180,7 @@ class EntryRow extends Component {
     render(){
         return(
             <tr>
-                <td colSpan="2">
+                <td colSpan="3">
                     <input placeholder="Select Item..." className="form-control" id="entry-row-item" type="text" list="item-datalist"  onChange={event => this.updateDescription(event.target.value)} />
                     <datalist id="item-datalist">
                     {this.state.options.map((item, index) =>( 

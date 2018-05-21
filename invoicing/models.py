@@ -27,8 +27,21 @@ class Invoice(models.Model):
     account = models.ForeignKey("invoicing.Account")
 
     @property
-    def subtotal(self):
-        raise NotImplementedError()
+    def total(self):
+        total = 0
+        for item in self.items.all():
+            total += item.subtotal
+        return total
+
+    @property
+    def balance_due(self):
+        total_payments = 0
+        for p in self.payment_set.all():
+            total_payments += p.amount
+        due = self.total - total_payments
+        if due <= 0:
+            self.paid_in_full = True
+        return due
 
     def __str__(self):
         return str(self.pk)
@@ -39,6 +52,10 @@ class InvoiceItem(models.Model):
 
     def __str__(self):
         return self.item.item_name + " * " + str(self.quantity)
+
+    @property
+    def subtotal(self):
+        return self.quantity * self.item.unit_price
 
 class Item(models.Model):
     item_name = models.CharField(max_length = 32)
@@ -63,7 +80,7 @@ class SalesRep(Person):
 
 class Payment(models.Model):
     #invoices need to be searchable by customer
-    invoice = models.OneToOneField("invoicing.Invoice")
+    invoice = models.ForeignKey("invoicing.Invoice")
     amount = models.FloatField()
     date = models.DateField()
     method = models.CharField(max_length=32, choices=[("cash", "Cash" ),

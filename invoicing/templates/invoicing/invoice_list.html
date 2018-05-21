@@ -22,6 +22,12 @@
         <a href="{% url 'invoicing:update-invoice' invoice.pk %}" class="btn btn-default">
             <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
         </a>
+        <a href="{% url 'invoicing:invoice-details' invoice.pk %}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            </a>
+        <a href="{% url 'invoicing:delete-invoice' invoice.pk %}" class="btn btn-danger">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
         </td>
     </tr>
     {% endfor %}

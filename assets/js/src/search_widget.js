@@ -5,6 +5,7 @@ class SearchWidget extends Component {
         //takes a json url as props and 
         //returns a list of selectable values
         super(props);
+    
         this.state = {
             options: [],
             inputVal: "",
@@ -29,6 +30,9 @@ class SearchWidget extends Component {
         }).then(res => {
             this.setState({options: res});
         });
+        if(this.props.populated){
+            this.props.populatedHandler(this);
+        }
     }
 
     handleChange(val){

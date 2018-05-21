@@ -7,10 +7,6 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = "__all__"
 
-class InvoiceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Invoice
-        fields = "__all__"
 
 class PaymentsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,3 +28,15 @@ class AccountSerializer(serializers.ModelSerializer):
         model = Account
         fields = "__all__"
 
+    
+class InvoiceItemSerializer(serializers.ModelSerializer):
+    item = ItemSerializer()
+    class Meta:
+        model = InvoiceItem
+        fields = "__all__"
+
+class InvoiceSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Invoice
+        fields = "__all__"

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 import os
 from django.shortcuts import render
@@ -44,6 +44,11 @@ class AccountAPIViewSet(viewsets.ModelViewSet):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
+
+class InvoiceItemAPIViewSet(viewsets.ModelViewSet):
+    queryset = InvoiceItem.objects.all()
+    serializer_class = InvoiceItemSerializer
+
 #########################################
 #           Class Based Views           #
 #########################################
@@ -68,7 +73,8 @@ class ItemUpdateView(ExtraContext, UpdateView):
 
 
 class ItemListView(ExtraContext, ListView):
-    extra_context = {"title": "Item List"}
+    extra_context = {"title": "Item List",
+                    "new_link": reverse_lazy("invoicing:create-item")}
     template_name = os.path.join("common_data", "item_list.html")
     model = Item
     paginate_by = 2
@@ -94,9 +100,36 @@ class CustomerUpdateView(ExtraContext, UpdateView):
 
 
 class CustomerListView(ExtraContext, ListView):
-    extra_context = {"title": "List of Customers"}
+    extra_context = {"title": "List of Customers",
+                    "new_link": reverse_lazy("invoicing:create-customer")}
     template_name = os.path.join("invoicing", "customer_list.html")
     model = Customer
+    paginate_by = 2
+    
+    def get_queryset(self):
+        return self.model.objects.all()
+
+class PaymentCreateView(ExtraContext, CreateView):
+    extra_context = {"title": "Create New Payment"}
+    template_name = os.path.join("common_data", "create_template.html")
+    model = Payment
+    success_url = reverse_lazy("invoicing:home")
+    form_class = forms.PaymentForm
+
+
+class PaymentUpdateView(ExtraContext, UpdateView):
+    extra_context = {"title": "Update Existing Payment"}
+    template_name = os.path.join("common_data", "create_template.html")
+    model = Payment
+    form_class = forms.PaymentForm
+    success_url = reverse_lazy("invoicing:home")
+
+
+class PaymentListView(ExtraContext, ListView):
+    extra_context = {"title": "List of Payments",
+                    "new_link": reverse_lazy("invoicing:create-payment")}
+    template_name = os.path.join("invoicing", "payment_list.html")
+    model = Payment
     paginate_by = 2
     
     def get_queryset(self):
@@ -120,7 +153,8 @@ class SalesRepUpdateView(ExtraContext, UpdateView):
 
 
 class SalesRepListView(ExtraContext, ListView):
-    extra_context = {"title": "List of Sales Representatives"}
+    extra_context = {"title": "List of Sales Representatives",
+                    "new_link": reverse_lazy("invoicing:create-sales-rep")}
     template_name = os.path.join("invoicing", "sales_rep_list.html")
     model = SalesRep
     paginate_by = 2
@@ -130,7 +164,8 @@ class SalesRepListView(ExtraContext, ListView):
 
 
 class InvoiceListView(ExtraContext, ListView):
-    extra_context = {"title": "List of Invoices"}
+    extra_context = {"title": "Invoice List",
+                    "new_link": reverse_lazy("invoicing:create-invoice")}
     template_name = os.path.join("invoicing", "invoice_list.html")
     model = Invoice
     paginate_by = 5
@@ -138,6 +173,9 @@ class InvoiceListView(ExtraContext, ListView):
     def get_queryset(self):
         return self.model.objects.all()
 
+class InvoiceDetailView(DetailView):
+    template_name = os.path.join("invoicing", "invoice_detail.html")
+    model = Invoice 
 
 class InvoiceCreateView(ExtraContext, CreateView):
     extra_content = {"title": "Create a New Invoice"}
@@ -163,6 +201,17 @@ class InvoiceUpdateView(ExtraContext, UpdateView):
     form_class = forms.InvoiceForm
     success_url = reverse_lazy("invoicing:home")
 
+    def post(self, request, *args, **kwargs):
+        resp = super(InvoiceUpdateView, self).post(request, *args, **kwargs)
+        inv = self.get_object()
+        for item in request.POST.getlist("items[]"):
+            pk, quantity = tuple(item.split("-"))
+            inv.items.create(quantity=quantity,
+                    item=Item.objects.get(pk=pk))
+        for pk in request.POST.getlist("removed_items[]"):
+            InvoiceItem.objects.get(pk=pk).delete()
+        
+        return resp
 #########################################################
 #                  Template Views                       #
 #########################################################
@@ -170,7 +219,19 @@ class InvoiceUpdateView(ExtraContext, UpdateView):
 #views with forms augmented with react use template views
 
 
-
+class ConfigView(TemplateView):
+    template_name = os.path.join("invoicing", "config.html")
 
 class Home(TemplateView):
     template_name = os.path.join("invoicing", "home.html")
+
+
+class InvoiceDeleteView(DeleteView):
+    template_name = os.path.join("common_data", "delete_template.html")
+    model = Invoice
+    success_url = reverse_lazy("invoicing:invoices-list")
+
+class PaymentDeleteView(DeleteView):
+    template_name = os.path.join("common_data", "delete_template.html")
+    model = Payment
+    success_url = reverse_lazy("invoicing:invoices-list")
