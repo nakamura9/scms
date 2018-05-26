@@ -23,7 +23,7 @@ class Invoice(models.Model):
     terms = models.CharField(max_length = 64)# give finite choices
     comments = models.TextField(null = True)
     paid_in_full = models.BooleanField(default=False)
-    items = models.ManyToManyField("invoicing.InvoiceItem", null=True )
+    items = models.ManyToManyField("invoicing.InvoiceItem")
     account = models.ForeignKey("invoicing.Account")
 
     @property

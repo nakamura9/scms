@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block window %}
+<style>
+    .thead {
+        padding:10px;
+        border: 1px solid black;
+    }
+
+    .tbody {
+        padding:5px;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+    .item-table {
+        border: 1px solid black;
+        min-width: 400px;
+    }
+    .foot {
+        text-align: right;
+        padding: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12"><h1 class="pull-right">Invoice</h1></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <h4><b>Latrom</b></h4>
+        </div>
+        <div class="col-sm-4 pull-right">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Date:</td>
+                        <td>{{object.date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Invoice Number:</td>
+                        <td>{{object.number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Due Date:</td>
+                        <td>#</td>
+                    </tr>
+                    <tr>
+                        <td>Customer PO No:</td>
+                        <td>#</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p><b>Bill To:</b></p>
+            <p>{{object.customer}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table>
+                <thead>
+                    <tr>
+                        <td class="thead">Qty</td>
+                        <td class="thead">Item</td>
+                        <td class="thead" style="width:300px;">Description</td>
+                        <td class="thead">Unit Price</td>
+                        <td class="thead">Total</td>
+                    </tr>
+                </thead>
+                <tbody class="item-table">
+                    {% for item in object.items.all %}
+                    <tr>
+                        <td class="tbody">{{item.quantity}}</td>
+                        <td class="tbody">{{item.item.item_name}}</td>
+                        <td class="tbody">{{item.item.description}}</td>
+                        <td class="tbody">{{item.item.unit_price}}</td>
+                        <td class="tbody">{{item.subtotal}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="foot" colspan="4"><b>Total:</b></td>
+                        <td>{{object.total}}</td>
+                    </tr>
+                    <tr>
+                        <td class="foot" colspan="4"><b>Balance Due:</b></td>
+                        <td>{{object.balance_due}}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div>
+                    <p><b>{{object.terms}}</b></p>
+                    <p><b>{{object.comments}}</b></p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

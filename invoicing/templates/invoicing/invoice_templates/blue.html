@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block window %}
+
+<style>
+    .thead {
+        padding:10px;
+        border: 1px solid black;
+        background-color: blue;
+        color:white;
+    }
+
+    .tbody {
+        padding:5px;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+    .item-table {
+        border: 1px solid black;
+        min-width: 400px;
+    }
+    .foot {
+        text-align: right;
+        padding: 10px;
+    }
+
+    .page-content {
+        margin-top: {{margin_top}}in;
+        margin-left: {{margin_left}}in;
+        margin-right: {{margin_right}}in;
+        margin-bottom: {{margin_bottom}}in;
+        border: 0.3cm solid blue;
+        border-radius: 0.5cm;
+        padding:0.5cm; 
+    }
+
+    @page {
+        size: A4;
+    }
+    
+</style>
+
+
+
+
+
+<div class="{{paper_size}}">
+    <div class="page-content">
+        <table style="height:25%">
+            <tbody>
+                    <tr>
+                        <td style="width:60%"></td>
+                        <td ><h1 >Invoice</h1></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 ><b>Latrom</b></h4>
+                        </td>
+                        <td>
+                                <table >
+                                        <tbody>
+                                            <tr>
+                                                <td>Date:</td>
+                                                <td>{{object.date}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Invoice Number:</td>
+                                                <td>{{object.number}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Due Date:</td>
+                                                <td>#</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Customer PO No:</td>
+                                                <td>#</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                            
+                        </td>
+                    </tr>
+            </tbody>
+        <tr>
+            <td style="border: 2px solid blue;">
+                    <p><b>Bill To:</b></p>
+                    <p>{{object.customer}}</p>
+            </td>
+        </tr>            
+        </table>
+        
+        <table style="height:70%">
+                <thead>
+                    <tr>
+                        <td class="thead">Qty</td>
+                        <td class="thead">Item</td>
+                        <td class="thead" style="width:300px;">Description</td>
+                        <td class="thead">Unit Price</td>
+                        <td class="thead">Total</td>
+                    </tr>
+                </thead>
+                <tbody class="item-table">
+                    {% for item in object.items.all %}
+                    <tr>
+                        <td class="tbody">{{item.quantity}}</td>
+                        <td class="tbody">{{item.item.item_name}}</td>
+                        <td class="tbody">{{item.item.description}}</td>
+                        <td class="tbody">{{item.item.unit_price}}</td>
+                        <td class="tbody">{{item.subtotal}}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr style="height:100%">
+                        <td class="tbody"></td>
+                        <td class="tbody"></td>
+                        <td class="tbody"></td>
+                        <td class="tbody"></td>
+                        <td class="tbody"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="foot" colspan="4"><b>Total:</b></td>
+                        <td>{{object.total}}</td>
+                    </tr>
+                    <tr>
+                        <td class="foot" colspan="4"><b>Balance Due:</b></td>
+                        <td>{{object.balance_due}}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div>
+                    <p><b>{{object.terms}}</b></p>
+                    <p><b>{{object.comments}}</b></p>
+            </div>
+    </div>
+</div>
+
+{% endblock %}

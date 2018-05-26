@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'events',
     'parents',
     'staff',
+    'shopping',
 ]
 
 MIDDLEWARE = [

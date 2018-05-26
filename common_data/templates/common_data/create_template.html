@@ -1,17 +1,21 @@
 {% extends "window.html" %}
 {% block content %}
 
+<div class="jumbotron">
+    <div class="container">
+        <h1>{{title}}</h1>
+        
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
-            <h3>{{title}}</h3>
+        <div class="col-sm-3">
+            {% block other %}{% endblock %}
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <div class="well">
-                    <form method="POST" action="">
+                    <form method="POST" action="" enctype="multipart/form-data" >
                     {% csrf_token %}
                     <table class="table">
                         {{form.as_table}}
@@ -20,7 +24,7 @@
                     </form>
             </div>
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-3"></div>
     </div>
     
 </div>

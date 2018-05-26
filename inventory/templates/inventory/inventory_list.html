@@ -1,0 +1,151 @@
+{% extends "common_data/list_template.html" %} {% block other %}
+<style>
+    .ffmpg thead {
+        background-color: steelblue;
+        color: white;
+        
+    }
+
+    .ffmpg td {
+        padding: 10px;
+    }
+
+
+</style>
+        <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Inventory Actions </h3>
+                </div>
+                <div class="panel-body">
+                   <table class="ffmpg">
+                       <thead>
+                           <tr>
+                               <td>Items</td>
+                               <td>Suppliers</td>
+                               <td>Orders</td>
+                           </tr>
+                       </thead>
+                       <tbody>
+                            <tr>
+                                    <td>
+                                        <ul>
+                                            <li><a href="{% url 'inventory:item-create' %}">Create New Item</a></li>
+                                            <li><a href="">Item Stock Level Report</a></li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li><a href="{% url 'inventory:supplier-create' %}">Create New Supplier</a></li>
+                                            <li><a href="{% url 'inventory:supplier-list'%} ">List Suppliers</a></li>
+                                            <li><a href="">Supplier Reports</a></li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <li><a href="{% url 'inventory:order-create' %}">Create New Purchase Order</a></li>
+                                        <li><a href="{% url 'inventory:order-list' %}">List Orders</a></li>
+                                        <li><a href="">Order status Report</a></li>
+                                    </td>
+                                </tr>
+                       </tbody>
+                       
+                   </table>
+                </div>
+            </div>
+        
+{% endblock %} {% block list_filters %}
+<div class="well">
+        <h3>Filters</h3>
+        <hr />
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="search...">
+        
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default">Go!</button>
+            </span>
+        
+        </div>
+        <hr />
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Category</td>
+                    <td>
+                        <select class="form-control" name="" id="">
+                            <option value="1">
+                                One
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Order by</td>
+                    <td>
+                        <select name="" class="form-control" id="">
+                            <option value="1">
+                                Price
+                            </option>
+                            <option value="1">
+                                Cost
+                            </option>
+                            <option value="1">
+                                Quantity
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Order</td>
+                    <td>
+                        <select name="" id="" class="form-control">
+                            <option value="1">
+                                Ascending
+                            </option>
+                            <option value="1">
+                                Descending
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+        
+            </tbody>
+        </table>
+</div>
+{% endblock %} {% block list_headings %}
+<tr class="bg-info">
+    <td>Item Name</td>
+    <td>Description</td>
+    <td>Category</td>
+    <td>Cost</td>
+    <td>Price</td>
+    <td>Quantity</td>
+    <td>Measure</td>
+    <td>Actions</td>
+</tr>
+{% endblock %} 
+{% block list_content %}
+    {% for item in object_list %}
+        <tr>
+            <td>{{item.item_name}}</td>
+            <td>{{item.description | truncatechars:30}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.unit_purchase_price}}</td>
+            <td>{{item.unit_sales_price}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.unit.name}}</td>
+            <td>
+                
+                <a class="btn btn-danger" href="#">
+                    
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+
+                
+                </a>
+                <a class="btn btn-default" href="{% url 'inventory:item-update'  pk=item.pk  %}">
+                    
+                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}

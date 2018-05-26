@@ -1,0 +1,30 @@
+{% extends "common_data/list_template.html" %}
+
+{% block list_headings %}
+    <tr>
+            <td class="info">Order Number</td>
+        <td class="info">Issue Date</td>
+        <td class="info">Supplier</td>
+        <td class="info">Number of Items</td>
+        <td class="info">Total Cost</td>
+        <td class="info">Actions</td>
+    </tr>
+{% endblock %}
+
+{% block list_content %}
+    {% for order in object_list %}
+    <tr>
+        <td>{{order.pk}}</td>
+        <td>{{order.issue_date}}</td>
+        <td>{{order.supplier}}</td>
+        <td>{{order.items.count}}</td>
+        <td>{{order.total_cost}}</td>
+        <td>
+        
+        <a href="#" class="btn btn-default">
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+{% endblock %}

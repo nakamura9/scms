@@ -2,205 +2,193 @@
 {% block content %}
 {% load render_bundle from webpack_loader %}
 
-<div class="jumbotron">
-    <div class="container">
-        <h1>Invoicing configuration</h1>
-        <p>Modify aspects of invoice forms and reporting</p>
-        <a class="btn btn-success" href="#" >Submit Changes</a>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            
-            <div role="tabpanel">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#invoice" aria-controls="tab" role="tab" data-toggle="tab">Invoice Template</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#business-details" aria-controls="tab" role="tab" data-toggle="tab">Business Details</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#tax" aria-controls="tab" role="tab" data-toggle="tab">Tax</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#page-layout" aria-controls="tab" role="tab" data-toggle="tab">Page Layout</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#payment-methods" aria-controls="tab" role="tab" data-toggle="tab">Payment Methods</a>
-                    </li>
-                </ul>
-            
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="general">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td><label for="">Currency</label></td>
-                                    <td><select name="" id="">
-                                        <optgroup>
-                                            <option value="dollar">Dollar($)</option>
-                                            <option value="sterling">Sterling</option>
-                                        </optgroup>
-                                    </select></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="invoice">
-                        <h4>Select Invoice template</h4>
-                        <select name="" id="">
-                            <option value="1">Simple</option>
-                            <option value="2">Blue</option>
-                            <option value="3">Steel</option>
-                            <option value="4">Verdant</option>
-                            <option value="5">Warm</option>
-                        </select>
-                        
-                        <div class="panel panel-info">
-                              <div class="panel-heading">
-                                    <h3 class="panel-title">Template Preview</h3>
-                              </div>
-                              <div class="panel-body">
-                                    <img class="img" src="" alt="template preview image" />
-                              </div>
-                        </div>
-                        
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="business-details">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td><label for="">Business Name</label></td>
-                                    <td><input class="form-control" type="text" /></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="">Registered Number</label></td>
-                                    <td><input class="form-control" type="text" /></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="">Business Address</label></td>
-                                    <td><textarea class="form-control"></textarea></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="">Contact Details</label></td>
-                                    <td><textarea class="form-control"></textarea></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="">Logo source File</label></td>
-                                    <td><input class="form-control" type="file" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                        <div class="panel panel-info">
-                              <div class="panel-heading">
-                                    <h3 class="panel-title">Logo Preview</h3>
-                              </div>
-                              <div class="panel-body">
-                                    <img class="img" src="" alt="logo image" />
-                              </div>
-                        </div>
-                        
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="tax">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td><label for="">Default tax rate</label></td>
-                                    <td><input type="number" name="" id=""></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="">Item prices are tax inclusive</label></td>
-                                    <td><input type="checkbox" name="" id=""></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="">Show tax rate as a column on invoice</label></td>
-                                    <td><input type="checkbox" name="" id=""></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <h3>Create Named Tax rates:</h3>
-                        <button class="btn btn-primary">Add</button>
-                        <table>
-                            <thead>
-                                <th>
-                                    <td></td>
-                                    <td>Name</td>
-                                    <td>Rate</td>
-                                </th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                    <button type="button" class="btn btn-danger">
-                                        
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                        
-                                    </button>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="page-layout">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td><label for="">Paper size</label></td>
-                                    <td>
-                                        <select name="" id="">
-                                            <optgroup>
-                                                <option value="A4">A4</option>
-                                                <option value="A5">A5</option>
-                                                <option value="A6">A6</option>
-                                            </optgroup>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><b>Margins(inches)</b></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="">Left</label></td>
-                                    <td><input type="number" name="" id=""></td>
-                                </tr>
-                                <tr>
-                                        <td><label for="">Top</label></td>
-                                        <td><input type="number" name="" id=""></td>
-                                    </tr>
-                                    <tr>
-                                            <td><label for="">Right</label></td>
-                                            <td><input type="number" name="" id=""></td>
-                                        </tr>
-                                        <tr>
-                                                <td><label for="">Bottom</label></td>
-                                                <td><input type="number" name="" id=""></td>
-                                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="payment-methods">
-                        <h3>Configure payment methods</h3>
-                        <p>Zimswitch</p>
-                        <p>Ecocash</p>
-                        <p>RTGS</p>
-                        <p>Payroll</p>
-                    </div>
-                </div>
-            </div>
-            
+<form method="POST" action="">
+    {% csrf_token %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Invoicing configuration</h1>
+            <p>Modify aspects of invoice forms and reporting</p>
+            <button type="submit" class="btn btn-success"  >Submit Changes</button>
         </div>
     </div>
-</div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <div role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#invoice" aria-controls="tab" role="tab" data-toggle="tab">Invoice Template</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#business-details" aria-controls="tab" role="tab" data-toggle="tab">Business Details</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#tax" aria-controls="tab" role="tab" data-toggle="tab">Tax</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#page-layout" aria-controls="tab" role="tab" data-toggle="tab">Page Layout</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#payment-methods" aria-controls="tab" role="tab" data-toggle="tab">Payment Methods</a>
+                        </li>
+                    </ul>
+                
+                    <!-- Tab panes -->
+                    
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="general">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><label for="">Currency</label></td>
+                                        <td>{{form.currency}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="invoice">
+                            <h4>Select Invoice template</h4>
+                            {{form.invoice_template}}
+                            
+                            <div class="panel panel-info">
+                                  <div class="panel-heading">
+                                        <h3 class="panel-title">Template Preview</h3>
+                                  </div>
+                                  <div class="panel-body">
+                                        <img class="img" src="" alt="template preview image" />
+                                  </div>
+                            </div>
+                            
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="business-details">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><label for="">Business Name</label></td>
+                                        <td>{{form.business_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">Registered Number</label></td>
+                                        <td>{{form.registration_number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">Business Address</label></td>
+                                        <td>{{form.business_address}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">Contact Details</label></td>
+                                        <td>{{form.contact_details}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">Logo source File</label></td>
+                                        <td>{{form.logo}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="panel panel-info">
+                                  <div class="panel-heading">
+                                        <h3 class="panel-title">Logo Preview</h3>
+                                  </div>
+                                  <div class="panel-body">
+                                        <img class="img" src="" alt="logo image" />
+                                  </div>
+                            </div>
+                            
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="tax">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><label for="">Default tax rate</label></td>
+                                        <td>{{form.tax_rate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">Item prices are tax inclusive</label></td>
+                                        <td>{{form.tax_inclusive}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">Show tax rate as a column on invoice</label></td>
+                                        <td>{{tax_column}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+    
+                            <h3>Create Named Tax rates:</h3>
+                            <button type="button" class="btn btn-primary">Add</button>
+                            <table>
+                                <thead>
+                                    <th>
+                                        <td></td>
+                                        <td>Name</td>
+                                        <td>Rate</td>
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                        <button type="button" class="btn btn-danger">
+                                            
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            
+                                        </button>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="page-layout">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><label for="">Paper size</label></td>
+                                        <td>
+                                            {{form.paper_size}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><b>Margins(inches)</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">Left</label></td>
+                                        <td>{{form.margin_left}}</td>
+                                    </tr>
+                                    <tr>
+                                            <td><label for="">Top</label></td>
+                                            <td>{{form.margin_top}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td><label for="">Right</label></td>
+                                                <td>{{form.margin_right}}</td>
+                                            </tr>
+                                            <tr>
+                                                    <td><label for="">Bottom</label></td>
+                                                    <td>{{form.margin_bottom}}</td>
+                                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="payment-methods">
+                            <h3>Configure payment methods</h3>
+                            <p>Zimswitch</p>
+                            <p>Ecocash</p>
+                            <p>RTGS</p>
+                            <p>Payroll</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</form>
+
 {% endblock %}

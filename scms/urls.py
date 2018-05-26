@@ -19,6 +19,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^base/', include('common_data.urls', namespace='base')),
     url(r'^invoicing/', include("invoicing.urls", namespace="invoicing")),
     url(r'^staff/', include("staff.urls", namespace="staff")),
     url(r'^library/', include("library.urls", namespace="library")),
@@ -26,4 +27,5 @@ urlpatterns = [
     url(r'^students/', include("students.urls", namespace="students")),
     url(r'^parents/', include("parents.urls", namespace="parents")),
     url(r'^inventory/', include("inventory.urls", namespace="inventory")),
+    url(r'^shopping/', include("shopping.urls", namespace="shopping")),
 ]

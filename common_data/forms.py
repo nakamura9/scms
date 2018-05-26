@@ -10,8 +10,9 @@ class BootstrapMixin(forms.Form):
         for field in self.fields:
             field = self.fields.get(field)
             field.widget.attrs['class'] ="form-control"
-            """if isinstance(field.widget, forms.TextInput):
-                field.widget.attrs['placeholder'] =field.label
-                field.label = """
+            
+            if 'date' in field.label:
+                field.widget.attrs['class'] += " ui-date-picker"
+                print field.widget.attrs['class']
             
 

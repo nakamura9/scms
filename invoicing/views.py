@@ -1,15 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 import os
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 import forms
 from models import Invoice, Item
 from common_data.utilities import ExtraContext
 from rest_framework import generics, viewsets
 from serializers import * 
+import json
 from django.urls import reverse_lazy
+
+def load_config():
+    config_file = open('config.json')
+    CONFIG = json.load(config_file)
+    config_file.close()
+    print CONFIG
+    return CONFIG
+
 
 ############################################
 #           API ViewSets                   #
@@ -174,8 +184,28 @@ class InvoiceListView(ExtraContext, ListView):
         return self.model.objects.all()
 
 class InvoiceDetailView(DetailView):
-    template_name = os.path.join("invoicing", "invoice_detail.html")
-    model = Invoice 
+    model = Invoice
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(InvoiceDetailView, self).get_context_data(*args, **kwargs)
+        context.update(load_config())
+        return context 
+
+
+    def get(self, *args, **kwargs):
+        
+        templates = {
+            "1": "simple.html",
+            "2": "blue.html",
+            "3": "steel.html",
+            "4": "verdant.html",
+            "5": "warm.html"
+            }
+        config = load_config()
+        self.template_name = os.path.join("invoicing", "invoice_templates",
+        templates[config["invoice_template"]])
+
+        return super(InvoiceDetailView, self).get(*args, **kwargs)
 
 class InvoiceCreateView(ExtraContext, CreateView):
     extra_content = {"title": "Create a New Invoice"}
@@ -219,8 +249,19 @@ class InvoiceUpdateView(ExtraContext, UpdateView):
 #views with forms augmented with react use template views
 
 
-class ConfigView(TemplateView):
+class ConfigView(FormView):
     template_name = os.path.join("invoicing", "config.html")
+    form_class = forms.ConfigForm
+
+    def get_initial(self):
+        return load_config()
+
+    def post(self, request):
+        print request.POST
+        data = request.POST.dict()
+        del data["csrfmiddlewaretoken"]
+        json.dump(data, open("config.json", 'w'))
+        return HttpResponseRedirect(reverse_lazy("invoicing:home"))
 
 class Home(TemplateView):
     template_name = os.path.join("invoicing", "home.html")

@@ -6,7 +6,9 @@ module.exports = {
     context: __dirname,
     entry:  {
         index: './js/index',
-        invoicing: './js/invoicing'
+        test_features: './js/test_features',
+        invoicing: './js/invoicing',
+        orders: './js/orders'
     },
     output: {
         path: path.resolve('./bundles/'),

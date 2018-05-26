@@ -1,0 +1,424 @@
+%PDF-1.4
+%??
+1 0 obj<</Length 161>>
+stream
+0.929412 0.388235 0.027451 rg
+54.000000 705.000000 336.000000 19.000000 re
+f
+0.517647 0.843137 0.192157 rg
+390.000000 705.000000 168.000000 19.000000 re
+f
+
+endstream
+endobj
+2 0 obj<</Length 396>>
+stream
+1.000000 1.000000 1.000000 rg
+261.000000 693.000000 91.000000 44.000000 re
+f
+0.929412 0.388235 0.027451 rg
+261.000000 735.000000 91.000000 2.000000 re
+f
+0.929412 0.388235 0.027451 rg
+261.000000 693.000000 2.000000 44.000000 re
+f
+0.929412 0.388235 0.027451 rg
+350.000000 693.000000 2.000000 44.000000 re
+f
+0.929412 0.388235 0.027451 rg
+261.000000 693.000000 91.000000 2.000000 re
+f
+
+endstream
+endobj
+3 0 obj<</Type /Font /BaseFont /Helvetica /Subtype /Type1 /Encoding /WinAnsiEncoding>>
+endobj
+4 0 obj<</Length 136>>
+stream
+0.380392 0.737255 0.019608 rg
+BT
+/FNT_Helvetica 23.000000 Tf 100.000000 Tz 0.000000 Tw
+269.567993 702.308998 Td
+(Invoice) Tj  
+ET
+
+endstream
+endobj
+5 0 obj<</Type /Font /BaseFont /Helvetica-Bold /Subtype /Type1 /Encoding /WinAnsiEncoding>>
+endobj
+6 0 obj<</Length 158>>
+stream
+0.380392 0.737255 0.019608 rg
+BT
+/FNT_Helvetica_Bold 10.333334 Tf 100.000000 Tz 0.000000 Tw
+60.000000 661.457672 Td
+([Change the company name]) Tj  
+ET
+
+endstream
+endobj
+7 0 obj<</Length 134>>
+stream
+0.000000 0.000000 0.000000 rg
+BT
+/FNT_Helvetica 10.666667 Tf 100.000000 Tz 0.000000 Tw
+396.000000 661.085327 Td
+(Date:) Tj  
+ET
+
+endstream
+endobj
+8 0 obj<</Length 108>>
+stream
+BT
+/FNT_Helvetica 10.666667 Tf 100.000000 Tz 0.000000 Tw
+474.000000 661.085327 Td
+(05/21/2018) Tj  
+ET
+
+endstream
+endobj
+9 0 obj<</Length 110>>
+stream
+BT
+/FNT_Helvetica 10.666667 Tf 100.000000 Tz 0.000000 Tw
+396.000000 649.085327 Td
+(Invoice No.:) Tj  
+ET
+
+endstream
+endobj
+10 0 obj<</Length 103>>
+stream
+BT
+/FNT_Helvetica 10.666667 Tf 100.000000 Tz 0.000000 Tw
+474.000000 649.085327 Td
+(10000) Tj  
+ET
+
+endstream
+endobj
+11 0 obj<</Length 107>>
+stream
+BT
+/FNT_Helvetica 10.666667 Tf 100.000000 Tz 0.000000 Tw
+396.000000 637.085327 Td
+(Due Date:) Tj  
+ET
+
+endstream
+endobj
+12 0 obj<</Length 108>>
+stream
+BT
+/FNT_Helvetica 10.666667 Tf 100.000000 Tz 0.000000 Tw
+474.000000 637.085327 Td
+(06/20/2018) Tj  
+ET
+
+endstream
+endobj
+13 0 obj<</Length 114>>
+stream
+BT
+/FNT_Helvetica 10.666667 Tf 100.000000 Tz 0.000000 Tw
+396.000000 625.085327 Td
+(Customer PO No.:) Tj  
+ET
+
+endstream
+endobj
+14 0 obj<</Length 107>>
+stream
+BT
+/FNT_Helvetica 10.666667 Tf 100.000000 Tz 0.000000 Tw
+484.000000 625.085327 Td
+(something) Tj  
+ET
+
+endstream
+endobj
+15 0 obj<</Length 141>>
+stream
+0.380392 0.737255 0.019608 rg
+BT
+/FNT_Helvetica_Bold 10.333334 Tf 100.000000 Tz 0.000000 Tw
+60.000000 582.457672 Td
+(Bill To:) Tj  
+ET
+
+endstream
+endobj
+16 0 obj<</Length 141>>
+stream
+0.000000 0.000000 0.000000 rg
+BT
+/FNT_Helvetica 10.666667 Tf 100.000000 Tz 0.000000 Tw
+60.000000 570.085327 Td
+(caleb kandoro) Tj  
+ET
+
+endstream
+endobj
+17 0 obj<</Length 136>>
+stream
+0.380392 0.737255 0.019608 rg
+BT
+/FNT_Helvetica_Bold 10.333334 Tf 100.000000 Tz 0.000000 Tw
+66.774330 540.457672 Td
+(Qty) Tj  
+ET
+
+endstream
+endobj
+18 0 obj<</Length 106>>
+stream
+BT
+/FNT_Helvetica_Bold 10.333334 Tf 100.000000 Tz 0.000000 Tw
+94.000000 540.457672 Td
+(Item) Tj  
+ET
+
+endstream
+endobj
+19 0 obj<</Length 114>>
+stream
+BT
+/FNT_Helvetica_Bold 10.333334 Tf 100.000000 Tz 0.000000 Tw
+134.000000 540.457672 Td
+(Description) Tj  
+ET
+
+endstream
+endobj
+20 0 obj<</Length 113>>
+stream
+BT
+/FNT_Helvetica_Bold 10.333334 Tf 100.000000 Tz 0.000000 Tw
+424.764008 540.457672 Td
+(Unit Price) Tj  
+ET
+
+endstream
+endobj
+21 0 obj<</Length 108>>
+stream
+BT
+/FNT_Helvetica_Bold 10.333334 Tf 100.000000 Tz 0.000000 Tw
+528.313660 540.457672 Td
+(Total) Tj  
+ET
+
+endstream
+endobj
+22 0 obj<</Length 52>>
+stream
+54.000000 535.000000 m
+558.000000 535.000000 l
+S
+
+endstream
+endobj
+23 0 obj<</Length 128>>
+stream
+0.000000 0.000000 0.000000 rg
+BT
+/FNT_Helvetica 9.666667 Tf 100.000000 Tz 0.000000 Tw
+78.625336 519.202332 Td
+(1) Tj  
+ET
+
+endstream
+endobj
+24 0 obj<</Length 100>>
+stream
+BT
+/FNT_Helvetica 9.666667 Tf 100.000000 Tz 0.000000 Tw
+94.000000 519.202332 Td
+(item) Tj  
+ET
+
+endstream
+endobj
+25 0 obj<</Length 106>>
+stream
+BT
+/FNT_Helvetica 9.666667 Tf 100.000000 Tz 0.000000 Tw
+134.000000 519.202332 Td
+(something) Tj  
+ET
+
+endstream
+endobj
+26 0 obj<</Length 104>>
+stream
+BT
+/FNT_Helvetica 9.666667 Tf 100.000000 Tz 0.000000 Tw
+440.752014 519.202332 Td
+(200.00 ) Tj  
+ET
+
+endstream
+endobj
+27 0 obj<</Length 104>>
+stream
+BT
+/FNT_Helvetica 9.666667 Tf 100.000000 Tz 0.000000 Tw
+520.752014 519.202332 Td
+(200.00 ) Tj  
+ET
+
+endstream
+endobj
+28 0 obj<</Length 418>>
+stream
+54.000000 557.000000 m
+558.000000 557.000000 l
+S
+54.000000 193.000000 m
+558.000000 193.000000 l
+S
+54.000000 557.000000 m
+54.000000 193.000000 l
+S
+89.000000 557.000000 m
+89.000000 193.000000 l
+S
+129.000000 557.000000 m
+129.000000 193.000000 l
+S
+398.000000 557.000000 m
+398.000000 193.000000 l
+S
+478.000000 557.000000 m
+478.000000 193.000000 l
+S
+558.000000 557.000000 m
+558.000000 193.000000 l
+S
+
+endstream
+endobj
+29 0 obj<</Length 107>>
+stream
+BT
+/FNT_Helvetica_Bold 9.333334 Tf 100.000000 Tz 0.000000 Tw
+491.702667 177.574646 Td
+(Total) Tj  
+ET
+
+endstream
+endobj
+30 0 obj<</Length 108>>
+stream
+BT
+/FNT_Helvetica_Bold 9.333334 Tf 100.000000 Tz 0.000000 Tw
+524.458679 177.574646 Td
+(200.00) Tj  
+ET
+
+endstream
+endobj
+31 0 obj<</Length 113>>
+stream
+BT
+/FNT_Helvetica_Bold 9.333334 Tf 100.000000 Tz 0.000000 Tw
+457.981323 161.574646 Td
+(Balance Due) Tj  
+ET
+
+endstream
+endobj
+32 0 obj<</Length 108>>
+stream
+BT
+/FNT_Helvetica_Bold 9.333334 Tf 100.000000 Tz 0.000000 Tw
+524.458679 161.574646 Td
+(200.00) Tj  
+ET
+
+endstream
+endobj
+33 0 obj<</Length 163>>
+stream
+BT
+/FNT_Helvetica_Bold 10.333334 Tf 100.000000 Tz 0.000000 Tw
+54.000000 130.457642 Td
+(Please contact us for more information about payment options.) Tj  
+ET
+
+endstream
+endobj
+34 0 obj<</Length 130>>
+stream
+BT
+/FNT_Helvetica_Bold 10.333334 Tf 100.000000 Tz 0.000000 Tw
+54.000000 104.457642 Td
+(Thank you for your business.) Tj  
+ET
+
+endstream
+endobj
+35 0 obj<</Length 157>>
+stream
+0.517647 0.843137 0.192157 rg
+54.000000 80.000000 504.000000 4.000000 re
+f
+0.929412 0.388235 0.027451 rg
+54.000000 55.000000 504.000000 19.000000 re
+f
+
+endstream
+endobj
+36 0 obj<</Type/Page /Parent 37      0 R /MediaBox [0 0 612 791] /Group <</Type /Group /S /Transparency /CS /DeviceRGB>> /Resources <</ProcSet [/PDF /Text ] /Font << /FNT_Helvetica_Bold 5 0 R  /FNT_Helvetica 3 0 R >> >> /Contents [ 1 0 R  2 0 R  4 0 R  6 0 R  7 0 R  8 0 R  9 0 R  10 0 R  11 0 R  12 0 R  13 0 R  14 0 R  15 0 R  16 0 R  17 0 R  18 0 R  19 0 R  20 0 R  21 0 R  22 0 R  23 0 R  24 0 R  25 0 R  26 0 R  27 0 R  28 0 R  29 0 R  30 0 R  31 0 R  32 0 R  33 0 R  34 0 R  35 0 R ]  >> 
+endobj
+37 0 obj<</Type/Pages /Count 1 /Kids [36 0 R ]>>
+endobj
+38 0 obj<</Type/Catalog   /Pages 37 0 R>>
+endobj
+xref
+0 39
+0000000000 65535 f
+0000000015 00000 n
+0000000229 00000 n
+0000000678 00000 n
+0000000774 00000 n
+0000000963 00000 n
+0000001064 00000 n
+0000001275 00000 n
+0000001462 00000 n
+0000001623 00000 n
+0000001786 00000 n
+0000001943 00000 n
+0000002104 00000 n
+0000002266 00000 n
+0000002434 00000 n
+0000002595 00000 n
+0000002790 00000 n
+0000002985 00000 n
+0000003175 00000 n
+0000003335 00000 n
+0000003503 00000 n
+0000003670 00000 n
+0000003832 00000 n
+0000003937 00000 n
+0000004119 00000 n
+0000004273 00000 n
+0000004433 00000 n
+0000004591 00000 n
+0000004749 00000 n
+0000005221 00000 n
+0000005382 00000 n
+0000005544 00000 n
+0000005711 00000 n
+0000005873 00000 n
+0000006090 00000 n
+0000006274 00000 n
+0000006485 00000 n
+0000006989 00000 n
+0000007047 00000 n
+trailer
+<</Size 39 /Root 38 0 R>>
+startxref
+7098
+%%EOF
