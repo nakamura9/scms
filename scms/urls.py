@@ -13,14 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url, include, static
 from django.contrib import admin
+from django.conf import settings
+
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^base/', include('common_data.urls', namespace='base')),
     url(r'^invoicing/', include("invoicing.urls", namespace="invoicing")),
+    url(r'^accounting/', include("accounting.urls", namespace="accounting")),
     url(r'^staff/', include("staff.urls", namespace="staff")),
     url(r'^library/', include("library.urls", namespace="library")),
     url(r'^events/', include("events.urls", namespace="events")),
@@ -28,4 +31,4 @@ urlpatterns = [
     url(r'^parents/', include("parents.urls", namespace="parents")),
     url(r'^inventory/', include("inventory.urls", namespace="inventory")),
     url(r'^shopping/', include("shopping.urls", namespace="shopping")),
-]
+] + static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

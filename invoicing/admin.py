@@ -8,7 +8,5 @@ from .models import *
 admin.site.register(Customer)
 admin.site.register(Invoice)
 admin.site.register(InvoiceItem)
-admin.site.register(Item)
 admin.site.register(Payment)
-admin.site.register(Account)
 admin.site.register(SalesRep)

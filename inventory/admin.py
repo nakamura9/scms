@@ -7,6 +7,7 @@ admin.site.register(Item)
 admin.site.register(UnitOfMeasure)
 admin.site.register(Category)
 admin.site.register(Supplier)
-
+admin.site.register(Order)
+admin.site.register(OrderItems)
 
 # Register your models here.

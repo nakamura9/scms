@@ -2,8 +2,6 @@ from django.conf.urls import url
 import views
 from rest_framework.routers import DefaultRouter
 
-item_router = DefaultRouter()
-item_router.register(r'api/item', views.ItemAPIViewSet, base_name='item')
 
 customer_router = DefaultRouter()
 customer_router.register(r'api/customer', views.CustomerAPIViewSet, base_name='customer')
@@ -17,18 +15,22 @@ payment_router.register(r'api/payment', views.PaymentAPIViewSet, base_name='paym
 sales_rep_router = DefaultRouter()
 sales_rep_router.register(r'api/sales-rep', views.SalesRepsAPIViewSet, base_name='sales-rep')
 
-account_router = DefaultRouter()
-account_router.register(r'api/account', views.AccountAPIViewSet, base_name='account')
 
 invoice_item_router = DefaultRouter()
-account_router.register(r'api/invoice-item', views.InvoiceItemAPIViewSet, base_name='invoice-item')
+invoice_item_router.register(r'api/invoice-item', views.InvoiceItemAPIViewSet, base_name='invoice-item')
+
+
+quote_router = DefaultRouter()
+quote_router.register(r'api/quote', views.QuoteAPIViewSet, base_name='quote-api')
+
+
+quote_item_router = DefaultRouter()
+quote_item_router.register(r'api/quote', views.QuoteItemAPIViewSet, base_name='quote-api')
+
 
 urlpatterns = [
     url(r'^$', views.Home.as_view(), name="home"),
     url(r'^config/?$', views.ConfigView.as_view(), name="config"),
-    url(r'^create-item$', views.ItemCreateView.as_view(), name='create-item'),
-    url(r'^update-item/(?P<pk>[\w]+)$', views.ItemUpdateView.as_view(), name='update-item'),
-    url(r'^item-list$', views.ItemListView.as_view(), name='items-list'),
     url(r'^create-customer$', views.CustomerCreateView.as_view(), name='create-customer'),
     url(r'^update-customer/(?P<pk>[\w]+)$', views.CustomerUpdateView.as_view(), name='update-customer'),
     url(r'^payments-list$', views.PaymentListView.as_view(), name='payments-list'),
@@ -44,5 +46,16 @@ urlpatterns = [
     url(r'^update-invoice/(?P<pk>[\w]+)$', views.InvoiceUpdateView.as_view(), name='update-invoice'),
     url(r'^invoice-details/(?P<pk>[\w]+)$', views.InvoiceDetailView.as_view(), name='invoice-details'),
     url(r'^delete-invoice/(?P<pk>[\w]+)$', views.InvoiceDeleteView.as_view(), name='delete-invoice'),
-] + item_router.urls + customer_router.urls + invoice_router.urls + \
-    payment_router.urls + sales_rep_router.urls + account_router.urls + invoice_item_router.urls
+    url(r'^delete-quote/(?P<pk>[\w]+)$', views.QuoteDeleteView.as_view(), name='delete-quote'),
+    url(r'^quote-detail/(?P<pk>[\w]+)$', views.QuoteDetailView.as_view(), name='quote-detail'),
+    url(r'^quote-update/(?P<pk>[\w]+)$', views.QuoteUpdateView.as_view(), name='quote-update'),
+    url(r'^create-quote$', views.QuoteCreateView.as_view(), name='create-quote'),
+    url(r'^quote-list$', views.QuoteListView.as_view(), name='quote-list'),
+    url(r'^delete-receipt/(?P<pk>[\w]+)$', views.ReceiptDeleteView.as_view(), name='delete-receipt'),
+    url(r'^receipt-detail/(?P<pk>[\w]+)$', views.ReceiptDetailView.as_view(), name='receipt-detail'),
+    url(r'^receipt-update/(?P<pk>[\w]+)$', views.ReceiptUpdateView.as_view(), name='receipt-update'),
+    url(r'^create-receipt$', views.ReceiptCreateView.as_view(), name='create-receipt'),
+    url(r'^receipt-list$', views.ReceiptListView.as_view(), name='receipt-list'),
+] +  customer_router.urls + invoice_router.urls + \
+    payment_router.urls + sales_rep_router.urls +  invoice_item_router.urls + \
+    quote_router.urls + quote_item_router.urls

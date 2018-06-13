@@ -1,12 +1,7 @@
 from rest_framework import serializers
 
 from .models import *
-
-class ItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Item
-        fields = "__all__"
-
+from inventory.serializers import ItemSerializer
 
 class PaymentsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,20 +18,32 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = "__all__"
 
-class AccountSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Account
-        fields = "__all__"
 
     
 class InvoiceItemSerializer(serializers.ModelSerializer):
-    item = ItemSerializer()
+    
+    item = ItemSerializer(many=False)
+
     class Meta:
         model = InvoiceItem
-        fields = "__all__"
+        fields = ("id", "quantity", "item")
 
 class InvoiceSerializer(serializers.ModelSerializer):
-    
+    items = InvoiceItemSerializer(many=True)
+    customer = CustomerSerializer(many=False)
     class Meta:
         model = Invoice
+        fields = "__all__"
+
+class QuoteItemSerializer(serializers.ModelSerializer):
+    item = ItemSerializer(many=False)
+    class Meta:
+        model = QuoteItem
+        fields = "__all__"
+
+class QuoteSerializer(serializers.ModelSerializer):
+    items = QuoteItemSerializer(many=True)
+    customer = CustomerSerializer(many=False)
+    class Meta:
+        model = Quote
         fields = "__all__"

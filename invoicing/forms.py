@@ -13,10 +13,10 @@ class ConfigForm(forms.Form):
     margin_left = forms.CharField(widget=forms.NumberInput)
     margin_top = forms.CharField(widget=forms.NumberInput)
     margin_bottom = forms.CharField(widget=forms.NumberInput)
-    logo = forms.FileField()
+    logo = forms.FileField(required = False)
     tax_rate = forms.CharField(widget=forms.NumberInput)
-    tax_inclusive = forms.BooleanField()
-    tax_column = forms.BooleanField()
+    tax_inclusive = forms.BooleanField(required=False)
+    tax_column = forms.BooleanField(required=False)
     invoice_template = forms.ChoiceField(choices=[("1", "Simple"),("2", "Blue"),("3", "Steel"),("4", "Verdant"),("5", "Warm"),])
     registration_number = forms.CharField()
 
@@ -33,18 +33,13 @@ class CustomerForm(forms.ModelForm, BootstrapMixin):
         model = models.Customer
         fields_required = ['first_name', 'last_name']
 
-class ItemForm(forms.ModelForm, BootstrapMixin):
-    class Meta:
-        fields = '__all__' 
-        model = models.Item
-
-
 class SalesRepForm(forms.ModelForm, BootstrapMixin):
     class Meta:
         fields = '__all__'
         model = models.SalesRep
 
 class PaymentForm(forms.ModelForm, BootstrapMixin):
+    create_transaction = forms.BooleanField(initial=True, required=False)
     class Meta:
         fields = '__all__'
         model = models.Payment
@@ -53,14 +48,11 @@ class PaymentForm(forms.ModelForm, BootstrapMixin):
         super(PaymentForm, self).__init__(*args, **kwargs)
         self.fields["date"].widget.attrs["class"] = "form-control ui-date-picker"
 
-class AccountForm(forms.ModelForm, BootstrapMixin):
-    class Meta:
-        fields = '__all__'
-        model = models.Account
 
 class InvoiceForm(forms.ModelForm, BootstrapMixin):
+    create_transaction = forms.BooleanField(initial=True, required=False)
     class Meta:
-        fields = ["date","customer", "account", "paid_in_full", "terms", "comments"]
+        fields = ["date","customer",  "paid_in_full", "terms", "comments", 'tax', 'salesperson', 'create_transaction']
         widgets = {
             "customer": HiddenInput,
         }
@@ -69,3 +61,16 @@ class InvoiceForm(forms.ModelForm, BootstrapMixin):
     def __init__(self, *args, **kwargs):
         super(InvoiceForm, self).__init__(*args, **kwargs)
         self.fields["date"].widget.attrs["class"] = "form-control ui-date-picker"
+
+class QuoteForm(forms.ModelForm, BootstrapMixin):
+    class Meta:
+        fields = ["date","customer", "comments", 'tax', 'salesperson']
+        model = models.Quote
+        widgets = {
+            "customer": HiddenInput,
+        }
+
+class ReceiptForm(forms.ModelForm, BootstrapMixin):
+    class Meta:
+        fields = '__all__'
+        model = models.Receipt

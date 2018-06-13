@@ -50,7 +50,7 @@ class SearchBox extends Component {
                     <input id="id-input" placeholder="Search..." className="form-control" type="text" list="dlist" onChange={event => this.handleChange(event.target.value)}/>
                     <span className="input-group-btn">
                     <button type="button" className="btn btn-primary" onClick={this.addSelected.bind(this)}>
-                    <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <i class="fas fa-plus"></i>
                     </button>
                     </span>
                 </div>               
@@ -96,7 +96,7 @@ class Selected extends Component{
             </span>
             <span style={{float:"right"}}>
                 <button type="button" className="btn btn-danger" onClick={() => this.props.rm(this.props.id)}>
-                    <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                <i class="fas fa-trash"></i>
                 </button>
             </span>
             

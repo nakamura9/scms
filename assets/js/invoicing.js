@@ -6,7 +6,6 @@ import $ from 'jquery';
 
 var populated = document.getElementById('populated-item-table');
 
-
 function addHandler(item, count){
     $("<input>")
             .attr({
@@ -19,13 +18,11 @@ function addHandler(item, count){
 
 function removeHandler(id){
     // used to remove hidden inputs from the form
-    console.log(id);
     $("#item_" + id).remove();
 }
 
 function populatedRemoveHandler(code){
     // used in update views to remove existing items
-    console.log("code: " + code);
     $("<input>")
             .attr({
                 "type": "hidden",
@@ -41,42 +38,42 @@ function searchHandler(data){
 }
 
 function populatedHandler(widget){
-    console.log(window.location.href);
-            var urlElements = window.location.href.split("/");
-            var invNo = urlElements[urlElements.length- 1]; 
-            $.ajax({
-                url: "/invoicing/api/invoice/" + invNo + "/",
-                data: {},
-                method: "GET"
-            }).then(res => {
-                console.log(res.customer);
-                $.ajax({
-                    url: '/invoicing/api/customer/' + res.customer + "/",
-                    data: {},
-                    method: "GET"
-                }).then(res => {
-                    console.log(res);
-                    widget.setState({
-                        selected: true,
-                        inputVal: res.id + " - " +
-                                  res.first_name + 
-                                  " " + res.last_name
-                    })
-                });
-            });
+    var urlElements = window.location.href.split("/");
+    var invNo = urlElements[urlElements.length- 1]; 
+    $.ajax({
+        url: "/invoicing/api/invoice/" + invNo + "/",
+        data: {},
+        method: "GET"
+    }).then(res => {
+        widget.setState({
+            selected: true,
+            inputVal: res.customer.id + " - " +                             res.customer.first_name + 
+                " " + res.customer.last_name
+        });
+    });
 }
 
 if(populated){
-    ReactDOM.render(<InvoiceTable populated={true} populatedRemoveHandler={populatedRemoveHandler} addHandler={
-        addHandler} removeHandler={removeHandler} />, 
+    ReactDOM.render(<InvoiceTable 
+        populated={true} 
+        populatedRemoveHandler={populatedRemoveHandler} 
+        addHandler={addHandler} 
+        removeHandler={removeHandler}
+        url="/invoicing/api/invoice/" />, 
         document.getElementById('populated-item-table'));
     
-    ReactDOM.render(<SearchWidget populated={true} populatedHandler={populatedHandler} url="/invoicing/api/customer/" handler={
-        searchHandler} />, document.getElementById('customer-search'));
+    ReactDOM.render(<SearchWidget populated={true} 
+        populatedHandler={populatedHandler} 
+        url="/invoicing/api/customer/" 
+        handler={searchHandler} />, 
+        document.getElementById('customer-search'));
 }else{
-    ReactDOM.render(<InvoiceTable populated={false} addHandler={addHandler} removeHandler={
-        removeHandler} />, document.getElementById('item-table'));
+    ReactDOM.render(<InvoiceTable populated={false} 
+        addHandler={addHandler} 
+        removeHandler={removeHandler}
+        url="/invoicing/api/invoice/" />, document.getElementById('item-table'));
     
-    ReactDOM.render(<SearchWidget  url="/invoicing/api/customer/" handler={
-        searchHandler} />, document.getElementById('customer-search'));
+    ReactDOM.render(<SearchWidget  url="/invoicing/api/customer/" 
+        handler={searchHandler} />, 
+        document.getElementById('customer-search'));
 }

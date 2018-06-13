@@ -4,8 +4,8 @@
     <tr>
         <td class="info">Invoice #</td>
         <td class="info">Date</td>
-        <td class="info">Amount</td>
-        <td class="info">Method</td>        
+        <td class="info">Total Amount</td>
+        <td class="info">Payment Method</td>        
         <td class="info">Actions</td>
     </tr>
 {% endblock %}
@@ -20,10 +20,10 @@
         <td>
         
         <a href="{% url 'invoicing:update-payment' pk=item.pk %}" class="btn btn-default">
-            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                <i class="fas fa-file"></i>
         </a>
         <a href="{% url 'invoicing:delete-payment' pk=item.pk %}" class="btn btn-danger">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <i class="fas fa-trash"></i>
             </a>
         </td>
     </tr>

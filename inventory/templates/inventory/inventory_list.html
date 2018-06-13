@@ -1,74 +1,88 @@
 {% extends "common_data/list_template.html" %} {% block other %}
 <style>
-    .ffmpg thead {
-        background-color: steelblue;
+    .card th {
         color: white;
-        
     }
-
-    .ffmpg td {
-        padding: 10px;
-    }
-
-
 </style>
-        <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Inventory Actions </h3>
-                </div>
-                <div class="panel-body">
-                   <table class="ffmpg">
-                       <thead>
-                           <tr>
-                               <td>Items</td>
-                               <td>Suppliers</td>
-                               <td>Orders</td>
-                           </tr>
-                       </thead>
-                       <tbody>
-                            <tr>
-                                    <td>
-                                        <ul>
-                                            <li><a href="{% url 'inventory:item-create' %}">Create New Item</a></li>
-                                            <li><a href="">Item Stock Level Report</a></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul>
-                                            <li><a href="{% url 'inventory:supplier-create' %}">Create New Supplier</a></li>
-                                            <li><a href="{% url 'inventory:supplier-list'%} ">List Suppliers</a></li>
-                                            <li><a href="">Supplier Reports</a></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <li><a href="{% url 'inventory:order-create' %}">Create New Purchase Order</a></li>
-                                        <li><a href="{% url 'inventory:order-list' %}">List Orders</a></li>
-                                        <li><a href="">Order status Report</a></li>
-                                    </td>
-                                </tr>
-                       </tbody>
-                       
-                   </table>
-                </div>
-            </div>
-        
-{% endblock %} {% block list_filters %}
-<div class="well">
-        <h3>Filters</h3>
-        <hr />
+
+<div class="card-deck">
+    <div class="card bg-primary text-white">
+        <div class="card-header">
+            <h4 class="card-title">Items</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{% url 'inventory:item-create' %}">Create New Item</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'inventory:item-list' %}">Item List</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="">Item Stock Level Report</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="card bg-primary text-white">
+        <div class="card-header">
+            <h4 class="card-title">Orders</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{% url 'inventory:order-create' %}">Create New Purchase Order</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'inventory:order-list' %}">List Orders</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'inventory:stock-receipt-create' %}">Receive order</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="">Order status Report</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="card bg-primary text-white">
+        <div class="card-header">
+            <h4 class="card-title">Suppliers</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{% url 'inventory:supplier-create' %}">Create New Supplier</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'inventory:supplier-list'%} ">List Suppliers</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="">Supplier Reports</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<hr class="my-4" /> {% endblock %} {% block list_filters %}
+<div class="card bg-primary text-white">
+    <div class="card-header">
+        <h3 class="cart-title">Filters</h3>
+    </div>
+    <div class="card-body">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="search...">
-        
+
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default">Go!</button>
             </span>
-        
+
         </div>
         <hr />
         <table class="table">
             <tbody>
                 <tr>
-                    <td>Category</td>
+                    <th>Category</th>
                     <td>
                         <select class="form-control" name="" id="">
                             <option value="1">
@@ -78,7 +92,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Order by</td>
+                    <th>Order by</th>
                     <td>
                         <select name="" class="form-control" id="">
                             <option value="1">
@@ -94,7 +108,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Order</td>
+                    <th>Order</th>
                     <td>
                         <select name="" id="" class="form-control">
                             <option value="1">
@@ -106,46 +120,41 @@
                         </select>
                     </td>
                 </tr>
-        
             </tbody>
         </table>
+    </div>
 </div>
 {% endblock %} {% block list_headings %}
-<tr class="bg-info">
-    <td>Item Name</td>
-    <td>Description</td>
-    <td>Category</td>
-    <td>Cost</td>
-    <td>Price</td>
-    <td>Quantity</td>
-    <td>Measure</td>
-    <td>Actions</td>
+<tr class="bg-primary text-white">
+    <th>Item Name</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Cost</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Measure</th>
+    <th>Actions</th>
 </tr>
-{% endblock %} 
-{% block list_content %}
-    {% for item in object_list %}
-        <tr>
-            <td>{{item.item_name}}</td>
-            <td>{{item.description | truncatechars:30}}</td>
-            <td>{{item.category}}</td>
-            <td>{{item.unit_purchase_price}}</td>
-            <td>{{item.unit_sales_price}}</td>
-            <td>{{item.quantity}}</td>
-            <td>{{item.unit.name}}</td>
-            <td>
-                
-                <a class="btn btn-danger" href="#">
-                    
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+{% endblock %} {% block list_content %} {% for item in object_list %}
+<tr>
+    <td>{{item.item_name}}</td>
+    <td>{{item.description | truncatechars:30}}</td>
+    <td>{{item.category}}</td>
+    <td>{{item.unit_purchase_price}}</td>
+    <td>{{item.unit_sales_price}}</td>
+    <td>{{item.quantity}}</td>
+    <td>{{item.unit.name}}</td>
+    <td>
 
-                
-                </a>
-                <a class="btn btn-default" href="{% url 'inventory:item-update'  pk=item.pk  %}">
-                    
-                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                    
-                </a>
-            </td>
-        </tr>
-    {% endfor %}
-{% endblock %}
+        <a class="btn btn-danger" href="#">
+            <i class="fas fa-trash"></i>
+        </a>
+        <a class="btn btn-default" href="{% url 'inventory:item-update'  pk=item.pk  %}">
+            <i class="fas fa-file"></i>
+        </a>
+        <a class="btn btn-default" href="{% url 'inventory:item-detail'  pk=item.pk  %}">
+            <i class="fas fa-eye"></i>
+        </a>
+    </td>
+</tr>
+{% endfor %} {% endblock %}

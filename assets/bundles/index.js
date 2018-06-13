@@ -78,7 +78,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./js/index.js?");
+eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or directory, open 'C:\\\\Users\\\\nakamura9a\\\\Documents\\\\code\\\\git\\\\scms\\\\assets\\\\js\\\\index.js'\\n    at Error (native)\");\n\n//# sourceURL=webpack:///./js/index.js?");
 
 /***/ })
 

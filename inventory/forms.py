@@ -4,6 +4,7 @@ from common_data.forms import BootstrapMixin
 
 #models ommitted UnitOfMeasure OrderItems Category
 
+
 class SupplierForm(forms.ModelForm, BootstrapMixin):
     class Meta:
         fields = '__all__'
@@ -15,19 +16,17 @@ class ItemForm(forms.ModelForm, BootstrapMixin):
         model = models.Item
 
 class OrderForm(forms.ModelForm, BootstrapMixin):
+    create_transaction = forms.BooleanField(initial=True, required=False)
+    
     class Meta:
-        fields = '__all__'
+        exclude = ["items"]
         model = models.Order
-        widgets = {
-            'items': forms.MultipleHiddenInput
-        }
+        
         
 class StockReceiptForm(forms.ModelForm, BootstrapMixin):
     class Meta:
-        fields = '__all__'
+        exclude = 'received_items',
         model= models.StockReceipt
-        widgets = {
-            'order': forms.HiddenInput
-        }
+        
 
 

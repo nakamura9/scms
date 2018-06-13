@@ -55,7 +55,7 @@ class SearchWidget extends Component {
                         <span className="pull-left"><h5>{this.state.inputVal}</h5></span>
                         <span className="pull-right">
                             <button type="button" className="btn btn-default" onClick={this.removeSelected.bind(this)}>
-                                <span className="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                            <span className="fas fa-trash"></span>
                             </button>
                         </span>
                     </div>
@@ -64,7 +64,7 @@ class SearchWidget extends Component {
                         <input id="search-id-input" placeholder="Search..." className="form-control" type="text" list="dlist" onChange={event => this.handleChange(event.target.value)} />
                         <span className="input-group-btn">
                             <button type="button" className="btn btn-primary" onClick={this.addSelected.bind(this)}>
-                                <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <i className="fas fa-plus"></i>
                             </button>
                         </span>
                     </div>}

@@ -4,11 +4,11 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>Update Existing Invoice</h1>
+        <h1 class="display-3">Update Existing Invoice</h1>
         <p>Add models(replace with modals) use API</p>
         <p>
             <a href="{% url 'invoicing:create-customer' %}" class="btn btn-primary btn-lg">Create Customer</a>
-            <a href="{% url 'invoicing:create-item' %}" class="btn btn-primary btn-lg">Create Item</a>
+            <a href="{% url 'inventory:item-create' %}" class="btn btn-primary btn-lg">Create Item</a>
         </p>
     </div>
 </div>
@@ -28,6 +28,7 @@
                         <button type="submit" class="btn btn-primary pull-right">Submit</button> 
                     </form>
         </div>
+        <!-- id of the root of the template differentiates between populated and empty tables -->
         <div class="col-sm-8" id="populated-item-table">
 
         </div>
